@@ -1,0 +1,63 @@
+#div1 {
+    width: 350px;
+    height: 70px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+  }
+    *{
+    border: 1px solid red;
+  }
+  
+  .draggable {
+    position: absolute;
+    z-index: 9;
+    border: 1px solid black;
+    text-align: center;
+    background-color: #2196F3;
+    color: #fff;
+    cursor: move;
+    padding: 10px;
+  }
+  
+  ul{
+    list-style-type: none;
+  }
+  
+  #numbers li {
+    display: inline;
+  }
+  #numbers{  
+    margin: auto;
+    width: 60%;
+    align-items: center;
+    justify-content: center;
+  }
+  #numbers ul{  
+    margin: auto;
+    width: 60%;
+  }
+  
+  
+  .number-item{
+    padding: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: 1px solid black;
+    color: black;
+    font-weight: 800;
+    line-height: 5;
+    height: 100px;
+    width: 100px;
+    background-color: lightgrey;
+  }
+  
+  .droparea{
+    height: 50px;
+    list-style-type: none;
+    background-color: rgb(85, 153, 255);
+    line-height: 3.2;
+    padding: 10px;
+    margin: 10px auto;
+    position: relative;
+    display: block;
+  }

@@ -4,9 +4,11 @@
     padding: 10px;
     border: 1px solid #aaaaaa;
   }
-    *{
+  
+  /*
+  *{
     border: 1px solid red;
-  }
+  }*/
   
   .draggable {
     position: absolute;
@@ -26,28 +28,15 @@
   #numbers li {
     display: inline;
   }
-  #numbers{  
-    margin: auto;
-    width: 60%;
-    align-items: center;
-    justify-content: center;
-  }
-  #numbers ul{  
-    margin: auto;
-    width: 60%;
-  }
-  
-  
-  .number-item{
+  .number-card{ 
     padding: 20px;
     margin-left: 20px;
     margin-right: 20px;
     border: 1px solid black;
     color: black;
-    font-weight: 800;
-    line-height: 5;
-    height: 100px;
-    width: 100px;
+    font-weight: 80;
+    height: 20px;
+    width: 20px;
     background-color: lightgrey;
   }
   
@@ -61,3 +50,36 @@
     position: relative;
     display: block;
   }
+
+
+  .tinted {
+    background-color: #3700ff;
+}
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+.col {
+  padding-right: 0;
+  margin-right: 15px;
+}
+.list-group {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+.col {
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 100%;
+}

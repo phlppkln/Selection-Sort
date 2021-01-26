@@ -7,10 +7,6 @@
     <title>Example-1</title>
 
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>  
-    <script type="text/javascript" src="js/draggable.js"></script>
 </head>
 
 <body>
@@ -21,11 +17,84 @@
     <button onclick="showalert()">ALGORITHMUS STARTEN</button>
     <button onclick="showalert()">SCHRITT VOR</button>
     <button onclick="showalert()">SCHRITT ZURÜCK</button>
-    <button onclick="showalert()">ALGORITHMUS STOPPEN</button>
+    <button onclick="resetAlgorithmus()">ALGORITHMUS STOPPEN</button>
+
+    <br>
+    <p></p>
+
+    <button onclick="moveAnfangEnde()">Anfang und Ende auf erste bzw letzte Karte</button>
+    <br>
+    <button onclick="moveSpeicherzeigerBestesToBeginning()">Setze Speicherzeiger und Bestes auf die erste zu sortierende
+        Karte</button>
+        <br>
+    <button onclick="moveSpeicherzeigerToRight()">Verschiebe Speicherzeiger um eine Position nach rechts</button>
+    <br>
+    <button onclick="speicherzeigerBeforeBestes()">Ist Speichezeiger kleiner als Bestes</button>
+    <br>
+    <button onclick="moveBestesToSpeicherzeiger()">Verschiebe Bestes auf die Position von Speicherzeiger</button>
+    <br>
+    <button onclick="ifSpeicherzeigerIsEnde()">Wenn Speicherzeiger auf Ende steht weiter bei 4 sonst wiederhole ab
+        0</button>
+    <button onclick="swapAnfangBestes()">Tausche Anfang und Bestes</button>
+    <br>
+    <button onclick="moveAnfangToRight()">Verschiebe Anfang um eine Position nach rechts</button>
+    <br>
+    <button onclick="ifAnfangIsEnde()">Ist Anfang = Ende</button>
+    <br>
+
+
 
     <!--
-    <div class="draggable" draggable="true" ondragstart="drag(event)" width="336" height="69">TEST TEST TEST TEST</div>
+    <div id="initial-list" class="list-group col">
+        <div class="list-group-item">Item 1</div>
+        <div class="list-group-item">Item 2</div>
+        <div class="list-group-item">Item 3</div>
+        <div class="list-group-item">Item 4</div>
+        <div class="list-group-item">Item 5</div>
+        <div class="list-group-item">Item 6</div>
+    </div>
 
+    <div id="algorithm-list" class="list-group col">
+        <div class="list-group-item tinted">Item 1</div>
+        <div class="list-group-item tinted">Item 2</div>
+        <div class="list-group-item tinted">Item 3</div>
+        <div class="list-group-item tinted">Item 4</div>
+        <div class="list-group-item tinted">Item 5</div>
+        <div class="list-group-item tinted">Item 6</div>
+    </div>
+-->
+
+ <!--
+    <div id="draggable" width="336" height="69">TEST TEST TEST TEST</div>
+
+    <div id="content">
+        <div id="cards">
+            <div class="card" id="card1">Vertausche die Karte unter -BESTES- mit der Karte unter -ANFANG-</div>
+            <div class="card" id="card2">Kommt der Buchstabe unter -SPEICHERZEIGER- alphabethisch früher als der
+                Buchstabe unter -BESTES-?</div>
+            <div class="card" id="card3">Wenn -SPEICHERZEIGER- auf -ENDE- steht, weiter bei (4.), sonst wiederhole ab
+                (1.)</div>
+            <div class="card" id="card4">Verschiebe -ANFANG- um eine Position nach rechts</div>
+            <div class="card" id="card5">Setze -SPEICHERZEIGER- und -BESTES- auf die erste zu sortierende Karte</div>
+            <div class="card" id="card6">Verschiebe -SPEICHERZEIGER- um eine Position nach rechts</div>
+            <div class="card" id="card7">Wenn -ANFANG- = -ENDE-, fertig, sonst wiederhole ab (0.)</div>
+            <div class="card" id="card8">-ANFANG- und -ENDE- zeigen auf die erste bzw. die letzte zu sortierende Karte
+            </div>
+        </div>
+        <div id="cardSlots">
+            <div class="droparea"></div>
+            <div class="droparea"></div>
+            <div class="droparea"></div>
+            <div class="droparea"></div>
+            <div class="droparea"></div>
+            <div class="droparea"></div>
+            <div class="droparea"></div>
+            <div class="droparea"></div>
+        </div>
+
+    </div>
+
+   
      Draggable algorihtmn part DIVS 
     <div class="draggable" draggable="true" id="card1">
         <div id="card1header">Vertausche die Karte unter -BESTES- mit der Karte unter -ANFANG-</div>
@@ -70,21 +139,34 @@
         <li><div class="droparea"></div></li>
         <li><div class="droparea"></div></li>
       </ul>
--->
 
-      <div id="numbers">
-    <ul>
-        <li class="number-item">5</li>
-        <li class="number-item">2</li>
-        <li class="number-item">8</li>
-        <li class="number-item">1</li>
-        <li class="number-item">3</li>
-        <li class="number-item">7</li>
-        <li class="number-item">9</li>
-    </ul>
+
+-->
+    <div id="number-cards">
+        <div id="card-pos1" class="number-card">5</div>
+        <div id="card-pos2" class="number-card">2</div>
+        <div id="card-pos3" class="number-card">8</div>
+        <div id="card-pos4" class="number-card">1</div>
+        <div id="card-pos5" class="number-card">3</div>
+        <div id="card-pos6" class="number-card">7</div>
+        <div id="card-pos7" class="number-card">9</div>
 </div>
 
+    <div id="arrows">
+        Position Zeiger Anfang: <input type="text" id="anfang-zeiger" value="0" data-position="0" disabled>
+        Position Zeiger Bestes: <input type="text" id="bestes-zeiger" value="0" data-position="0" disabled>
+        Position Zeiger Speicherzeiger: <input type="text" id="speicherzeiger-zeiger" value="0" data-position="0" disabled>
+        Position Zeiger Ende: <input type="text" id="ende-zeiger" value="0" data-position="0" disabled>
+    </div>
 
     <button onclick="showalert()">BEISPIEL ABSCHLIESSEN</button>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script type="text/javascript" src="js/draggable.js"></script>
+    <script type="text/javascript" src="js/sort.js"></script>
 </body>
+
 </html>

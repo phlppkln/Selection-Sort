@@ -1,113 +1,179 @@
-var time;
-var swaps;
-var operations;
-
 var numbers;
 var anfangPosition, bestesPosition, speicherzeigerPosition, endePosition;
 
 var firstUnsortedCardPosition;
-
 var speicherzeigerBesserBestes;
+var currentAlgoStep, previousAlgoStep;
 
-var currentAlgoStep;
-
-var card1,card2,card3,card4,card5,card6,card7;
-
-$(init);
-
-function init() {
+$(document).ready(function () {
     firstUnsortedCardPosition = 0;
-    speicherzeigerBesserBestes=false;
-    currentAlgoStep = -1;
+    speicherzeigerBesserBestes = false;
+    currentAlgoStep = 0;
+    previousAlgoStep = -1;
 
-    numbers = document.querySelectorAll('.number-card');
+    numbers = document.querySelectorAll('.numberList');
     anfangPosition = document.getElementById("anfang-zeiger").getAttribute("data-position");
     bestesPosition = document.getElementById("bestes-zeiger").getAttribute("data-position");
     speicherzeigerPosition = document.getElementById("anfang-zeiger").getAttribute("data-position");
     endePosition = document.getElementById("anfang-zeiger").getAttribute("data-position");
-    printpositionen();
+
+    resetAlgorithmus();
+});
+
+function startAlgorithmn() {
+    console.log("startAlgorithmn");
 }
 
-function resetAlgorithmus(){
+function stepForward() {
+    var parent = document.getElementById('drop-pos'+currentAlgoStep);
+    if(parent.childNodes.length<=0) { 
+        alert("Algorithmus ist leer!");    
+        return;
+    }
+    var child = parent.childNodes[0];
+    doStep(child.id);
+}
+
+
+function stepBack() {
+
+}
+
+function doStep(cardId) {
+    changeActive();
+    switch (cardId) {
+        case 'card0':
+            moveAnfangEnde();
+            increaseAlgoStep();
+            break;
+        case 'card1':
+            moveSpeicherzeigerBestesToBeginning();
+            increaseAlgoStep();
+            break;
+        case 'card2':
+            moveSpeicherzeigerToRight();
+            increaseAlgoStep();
+            break;
+        case 'card3':
+            speicherzeigerBeforeBestes();
+            increaseAlgoStep();
+            break;
+        case 'card4':
+            if (speicherzeigerBesserBestes) {
+                moveBestesToSpeicherzeiger();
+            }
+            increaseAlgoStep();
+            break;
+        case 'card5':
+            ifSpeicherzeigerIsEnde();
+            break;
+        case 'card6':
+            swapAnfangBestes();
+            increaseAlgoStep();
+            break;
+        case 'card7':
+            moveAnfangToRight();
+            increaseAlgoStep();
+            break;
+        case 'card8':
+            ifAnfangIsEnde()
+            break;
+        default:
+            alert("Something went wrong");
+    }
+}
+
+function resetAlgorithmus() {
+    previousAlgoStep = -1;
+    currentAlgoStep=0;
     setAnfangZeigerPosition(0);
     setEndeZeigerPosition(0);
     setBestesZeigerPosition(0);
     setSpeicherzeigerZeigerPosition(0);
 }
 
-function getAnfangValue(){
+function changeActive(){
+    if(previousAlgoStep != -1){ 
+        document.getElementById('drop-pos'+previousAlgoStep).classList.remove('dropareaActive');
+    }
+    document.getElementById('drop-pos'+currentAlgoStep).classList.add('dropareaActive');
+}
+
+function getAnfangValue() {
     return numbers[anfangPosition].innerHTML;
 }
 
-function getBestesValue(){
+function getBestesValue() {
     return numbers[bestesPosition].innerHTML;
 }
 
-function getSpeicherzeigerValue(){
+function getSpeicherzeigerValue() {
     return numbers[speicherzeigerPosition].innerHTML;
 }
 
-function getEndeValue(){
+function getEndeValue() {
     return numbers[endePosition].innerHTML;
 }
 
-function setAnfangZeigerPosition(newPosition){
+function setAnfangZeigerPosition(newPosition) {
     document.getElementById("anfang-zeiger").setAttribute("data-position", newPosition);
-    anfangPosition=newPosition;
+    anfangPosition = newPosition;
     document.getElementById("anfang-zeiger").value = numbers[newPosition].innerHTML;
 }
 
-function setEndeZeigerPosition(newPosition){
+function setEndeZeigerPosition(newPosition) {
     document.getElementById("ende-zeiger").setAttribute("data-position", newPosition);
     endePosition = newPosition;
     document.getElementById("ende-zeiger").value = numbers[newPosition].innerHTML;
 }
 
-function setSpeicherzeigerZeigerPosition(newPosition){
+function setSpeicherzeigerZeigerPosition(newPosition) {
     document.getElementById("speicherzeiger-zeiger").setAttribute("data-position", newPosition);
-    speicherzeigerPosition=newPosition;
+    speicherzeigerPosition = newPosition;
     document.getElementById("speicherzeiger-zeiger").value = numbers[newPosition].innerHTML;
 }
 
-function setBestesZeigerPosition(newPosition){
+function setBestesZeigerPosition(newPosition) {
     document.getElementById("bestes-zeiger").setAttribute("data-position", newPosition);
-    bestesPosition=newPosition;;
+    bestesPosition = newPosition;;
     document.getElementById("bestes-zeiger").value = numbers[newPosition].innerHTML;
 }
 
-function printpositionen(){
+function printpositionen() {
     console.log(anfangPosition + " _ " + bestesPosition + " _ " + speicherzeigerPosition + " _ " + endePosition);
 }
 
-function increaseAlgoStep(){
-    if(currentAlgoStep<10)
+function increaseAlgoStep() {
+    previousAlgoStep = currentAlgoStep;
+    if (currentAlgoStep < 9){
         currentAlgoStep++;
-    else
-        currentAlgoStep=0;
+    }
+    else{
+        currentAlgoStep = 1;
+    }
 }
-
 
 //algorithmn steps
 
 //ANFANG und ENDE zeigen auf die erste bzw die letzte zu sortierende Karte
-function moveAnfangEnde(){
+function moveAnfangEnde() {
     setAnfangZeigerPosition(firstUnsortedCardPosition);
-    setEndeZeigerPosition(numbers.length-1);
+    setEndeZeigerPosition(numbers.length - 1);
     console.log("move Anfang und Ende");
     printpositionen();
 }
 
 //Setzte SPEICHERZEIGER und BESTES auf die erste zu sortierende Karte
-function moveSpeicherzeigerBestesToBeginning(){
+function moveSpeicherzeigerBestesToBeginning() {
     setSpeicherzeigerZeigerPosition(firstUnsortedCardPosition);
-    setBestesZeigerPosition(firstUnsortedCardPosition);    
+    setBestesZeigerPosition(firstUnsortedCardPosition);
     console.log("move Speicherzeiger und bestes auf erste zu sortierende Karte");
     printpositionen();
 }
 
 //Verschiebe SPEICHERZEIGER um eine Position nach rechts
-function moveSpeicherzeigerToRight(){
-    if(speicherzeigerPosition >= numbers.length-1) return;
+function moveSpeicherzeigerToRight() {
+    if (speicherzeigerPosition >= numbers.length - 1) return;
 
     speicherzeigerPosition++;
     setSpeicherzeigerZeigerPosition(speicherzeigerPosition);
@@ -116,8 +182,8 @@ function moveSpeicherzeigerToRight(){
 }
 
 //Ist die Zahl unter SPEICHERZEIGER kleiner als die Zahl unter BESTES?
-function speicherzeigerBeforeBestes(){ 
-    if(getSpeicherzeigerValue() < getBestesValue())
+function speicherzeigerBeforeBestes() {
+    if (getSpeicherzeigerValue() < getBestesValue())
         speicherzeigerBesserBestes = true;
     else
         speicherzeigerBesserBestes = false;
@@ -126,23 +192,29 @@ function speicherzeigerBeforeBestes(){
     printpositionen();
 }
 
-//Verschiebe Bestes auf die Position von Speicherzeiger
-function moveBestesToSpeicherzeiger(){    
+//Verschiebe BESTES auf die Position von SPEICHERZEIGER
+function moveBestesToSpeicherzeiger() {
     setBestesZeigerPosition(speicherzeigerPosition);
     console.log("move bestes to speicherzeigerPosition");
     printpositionen();
 }
 
 //Wenn SPEICHERZEIGER auf ENDE steht, weiter bei (4.), sonst wiederhole ab (1.)
-function ifSpeicherzeigerIsEnde(){
-    if(speicherzeigerPosition >= numbers.length-1)
-        console.log("speicherzeigerPosition auf ende?: " + 4 + ": vertausche bestes mit anfang");
-    else
-        console.log("speicherzeigerPosition auf ende?: " + 1 + ": verschiebe speicherzeiger nach rechts");
+function ifSpeicherzeigerIsEnde() {
+    if (speicherzeigerPosition >= numbers.length - 1){ 
+        previousAlgoStep = currentAlgoStep;
+        currentAlgoStep=6;
+        console.log("speicherzeigerPosition auf ende?: !(5)! vertausche bestes mit anfang");
+    }
+    else{
+        previousAlgoStep = currentAlgoStep;
+        currentAlgoStep = 2;
+        console.log("speicherzeigerPosition auf ende?: !(2)! verschiebe speicherzeiger nach rechts");
+    }
 }
 
 //Vertausche die Karte unter BESTES mit der Karte unter ANFANG
-function swapAnfangBestes(){
+function swapAnfangBestes() {
     var tmpNum = numbers[bestesPosition].innerHTML;
     numbers[bestesPosition].innerHTML = numbers[anfangPosition].innerHTML;
     numbers[anfangPosition].innerHTML = tmpNum;
@@ -155,9 +227,9 @@ function swapAnfangBestes(){
 }
 
 //Verschiebe ANFANG um eine Position nach rechts
-function moveAnfangToRight(){
-    if(anfangPosition >= numbers.length-1) return;
-    
+function moveAnfangToRight() {
+    if (anfangPosition >= numbers.length - 1) return;
+
     anfangPosition++;
     setAnfangZeigerPosition(anfangPosition);
     console.log("move anfang position");
@@ -165,16 +237,14 @@ function moveAnfangToRight(){
 }
 
 //Wenn ANFANG = ENDE, fertig, sonst wiederhole ab (0.)
-function ifAnfangIsEnde(){
-    if(getAnfangValue()==getEndeValue()){
+function ifAnfangIsEnde() {
+    if (getAnfangValue() == getEndeValue()) {
         console.log("Algorithmus beendet!");
-    }
-    else{
-        currentAlgoStep=0;
+    } else {
+        previousAlgoStep = currentAlgoStep;
+        currentAlgoStep = 1;
         firstUnsortedCardPosition++;
         console.log("is Anfang gleich Ende: wiederhole 0: setze speicherzeiger und bestes auf erste zu sortiernde karte");
     }
     printpositionen();
 }
-
-

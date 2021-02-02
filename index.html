@@ -10,157 +10,132 @@
 </head>
 
 <body>
-    <h1>Selection Sort Algorithmus</h1>
+    <div id="content">
+        <h1>Selection Sort Algorithmus</h1>
 
-    <p>Versuchen Sie die ungeordnete Liste unten mithilfe der Elemente zu sortieren.</p>
+        <p>Versuchen Sie die ungeordnete Liste unten mithilfe der Elemente zu sortieren.</p>
 
-    <button onclick="showalert()">ALGORITHMUS STARTEN</button>
-    <button onclick="showalert()">SCHRITT VOR</button>
-    <button onclick="showalert()">SCHRITT ZURÜCK</button>
-    <button onclick="resetAlgorithmus()">ALGORITHMUS STOPPEN</button>
-
-    <br>
-    <p></p>
-
+        <!--
     <button onclick="moveAnfangEnde()">Anfang und Ende auf erste bzw letzte Karte</button>
     <br>
-    <button onclick="moveSpeicherzeigerBestesToBeginning()">Setze Speicherzeiger und Bestes auf die erste zu sortierende
-        Karte</button>
-        <br>
+    <button onclick="moveSpeicherzeigerBestesToBeginning()">Setze Speicherzeiger und Bestes auf die erste zu sortierende Karte</button>
+    <br>
     <button onclick="moveSpeicherzeigerToRight()">Verschiebe Speicherzeiger um eine Position nach rechts</button>
     <br>
     <button onclick="speicherzeigerBeforeBestes()">Ist Speichezeiger kleiner als Bestes</button>
     <br>
     <button onclick="moveBestesToSpeicherzeiger()">Verschiebe Bestes auf die Position von Speicherzeiger</button>
     <br>
-    <button onclick="ifSpeicherzeigerIsEnde()">Wenn Speicherzeiger auf Ende steht weiter bei 4 sonst wiederhole ab
-        0</button>
+    <button onclick="ifSpeicherzeigerIsEnde()">Wenn Speicherzeiger auf Ende steht weiter bei 4 sonst wiederhole ab 0</button>
+    <br>
     <button onclick="swapAnfangBestes()">Tausche Anfang und Bestes</button>
     <br>
     <button onclick="moveAnfangToRight()">Verschiebe Anfang um eine Position nach rechts</button>
     <br>
     <button onclick="ifAnfangIsEnde()">Ist Anfang = Ende</button>
     <br>
-
-
-
-    <!--
-    <div id="initial-list" class="list-group col">
-        <div class="list-group-item">Item 1</div>
-        <div class="list-group-item">Item 2</div>
-        <div class="list-group-item">Item 3</div>
-        <div class="list-group-item">Item 4</div>
-        <div class="list-group-item">Item 5</div>
-        <div class="list-group-item">Item 6</div>
-    </div>
-
-    <div id="algorithm-list" class="list-group col">
-        <div class="list-group-item tinted">Item 1</div>
-        <div class="list-group-item tinted">Item 2</div>
-        <div class="list-group-item tinted">Item 3</div>
-        <div class="list-group-item tinted">Item 4</div>
-        <div class="list-group-item tinted">Item 5</div>
-        <div class="list-group-item tinted">Item 6</div>
-    </div>
 -->
 
- <!--
-    <div id="draggable" width="336" height="69">TEST TEST TEST TEST</div>
+        <div id="cardContainer">
+            <div class="card" id="card0" draggable="true"> <img class="arrowSmall" src="res/anfang.gif"
+                    alt="Pfeil Anfang" draggable="false"> und <img class="arrowSmall" src="res/ende.gif"
+                    alt="Pfeil Ende" draggable="false"> zeigen auf die erste bzw. die letzte zu
+                sortierende Karte</div>
+            <div class="card" id="card1" draggable="true">Setze <img class="arrowSmall" src="res/speicherzeiger.gif"
+                    alt="Pfeil Speicherzeiger" draggable="false"> und <img class="arrowSmall" src="res/bestes.gif"
+                    alt="Pfeil Bestes" draggable="false"> auf die erste zu
+                sortierende Karte</div>
+            <div class="card" id="card2" draggable="true">Verschiebe <img class="arrowSmall"
+                    src="res/speicherzeiger.gif" alt="Pfeil Speicherzeiger" draggable="false"> um eine Position nach
+                rechts</div>
+            <div class="card" id="card3" draggable="true">Ist die Zahl unter <img class="arrowSmall"
+                    src="res/speicherzeiger.gif" alt="Pfeil Speicherzeiger" draggable="false"> kleiner als die Zahl
+                unter
+                <img class="arrowSmall" src="res/bestes.gif" alt="Pfeil Bestes" draggable="false">?
+            </div>
+            <div class="card" id="card4" draggable="true">Falls JA: Verschiebe <img class="arrowSmall"
+                    src="res/bestes.gif" alt="Pfeil Bestes" draggable="false"> auf die Position von
+                <img class="arrowSmall" src="res/speicherzeiger.gif" alt="Pfeil Speicherzeiger" draggable="false">
+            </div>
+            <div class="card" id="card5" draggable="true">Wenn <img class="arrowSmall" src="res/speicherzeiger.gif"
+                    alt="Pfeil Speicherzeiger" draggable="false"> auf <img class="arrowSmall" src="res/ende.gif"
+                    alt="Pfeil Ende" draggable="false"> steht, weiter bei (5.), sonst
+                wiederhole ab
+                (2.)</div>
+            <div class="card" id="card6" draggable="true">Vertausche die Karte unter <img class="arrowSmall"
+                    src="res/bestes.gif" alt="Pfeil Bestes" draggable="false"> mit der Karte unter
+                <img class="arrowSmall" src="res/anfang.gif" alt="Pfeil Anfang" draggable="false">
+            </div>
+            <div class="card" id="card7" draggable="true">Verschiebe <img class="arrowSmall" src="res/anfang.gif"
+                    alt="Pfeil Anfang" draggable="false"> um eine Position nach rechts</div>
+            <div class="card" id="card8" draggable="true">Wenn <img class="arrowSmall" src="res/anfang.gif"
+                    alt="Pfeil Anfang" draggable="false"> = <img class="arrowSmall" src="res/ende.gif" alt="Pfeil Ende"
+                    draggable="false">, fertig, sonst wiederhole ab (1.)</div>
+        </div>
+        <div id="algorithmnContainer">
+            <div id="algorithmnListContainer">
+                <div id="slotNumberContainer">
+                    <div class="slotNumber" id="">0</div>
+                    <div class="slotNumber" id="">1</div>
+                    <div class="slotNumber" id="">2</div>
+                    <div class="slotNumber" id="">3</div>
+                    <div class="slotNumber" id="">4</div>
+                    <div class="slotNumber" id="">5</div>
+                    <div class="slotNumber" id="">6</div>
+                    <div class="slotNumber" id="">7</div>
+                    <div class="slotNumber" id="">8</div>
+                </div>
 
-    <div id="content">
-        <div id="cards">
-            <div class="card" id="card1">Vertausche die Karte unter -BESTES- mit der Karte unter -ANFANG-</div>
-            <div class="card" id="card2">Kommt der Buchstabe unter -SPEICHERZEIGER- alphabethisch früher als der
-                Buchstabe unter -BESTES-?</div>
-            <div class="card" id="card3">Wenn -SPEICHERZEIGER- auf -ENDE- steht, weiter bei (4.), sonst wiederhole ab
-                (1.)</div>
-            <div class="card" id="card4">Verschiebe -ANFANG- um eine Position nach rechts</div>
-            <div class="card" id="card5">Setze -SPEICHERZEIGER- und -BESTES- auf die erste zu sortierende Karte</div>
-            <div class="card" id="card6">Verschiebe -SPEICHERZEIGER- um eine Position nach rechts</div>
-            <div class="card" id="card7">Wenn -ANFANG- = -ENDE-, fertig, sonst wiederhole ab (0.)</div>
-            <div class="card" id="card8">-ANFANG- und -ENDE- zeigen auf die erste bzw. die letzte zu sortierende Karte
+                <div id="dropareaContainer">
+                    <div class="droparea initDroparea" id="drop-pos0"></div>
+                    <div class="droparea" id="drop-pos1"></div>
+                    <div class="droparea" id="drop-pos2"></div>
+                    <div class="droparea" id="drop-pos3"></div>
+                    <div class="droparea conditionDroparea" id="drop-pos4"></div>
+                    <div class="droparea" id="drop-pos5"></div>
+                    <div class="droparea" id="drop-pos6"></div>
+                    <div class="droparea" id="drop-pos7"></div>
+                    <div class="droparea" id="drop-pos8"></div>
+                </div>
+            </div>
+
+            <div id="algorithmnButtonContainter">
+                <button onclick="startAlgorithmn()">ALGORITHMUS STARTEN</button>
+                <button onclick="stepForward()">SCHRITT VOR</button>
+                <button onclick="showalert()">SCHRITT ZURÜCK</button>
+                <button onclick="resetAlgorithmus()">ALGORITHMUS STOPPEN</button>
+                <button onclick="printIdInFirstDroparea()">Id in first</button>
             </div>
         </div>
-        <div id="cardSlots">
-            <div class="droparea"></div>
-            <div class="droparea"></div>
-            <div class="droparea"></div>
-            <div class="droparea"></div>
-            <div class="droparea"></div>
-            <div class="droparea"></div>
-            <div class="droparea"></div>
-            <div class="droparea"></div>
+
+        <div id="numberListContainer">
+            <div id="numberList-pos1" class="numberList">5</div>
+            <div id="numberList-pos2" class="numberList">2</div>
+            <div id="numberList-pos3" class="numberList">8</div>
+            <div id="numberList-pos4" class="numberList">1</div>
+            <div id="numberList-pos5" class="numberList">3</div>
+            <div id="numberList-pos6" class="numberList">7</div>
+            <div id="numberList-pos7" class="numberList">9</div>
         </div>
 
+        <div id="arrowsContainer">
+            <div class="zeigerPosition"><img class="arrowSmall" src="res/anfang.gif" alt="Pfeil Anfang"
+                    draggable="false">: <input type="text" id="anfang-zeiger" value="0" data-position="0" disabled>
+            </div>
+            <div class="zeigerPosition"><img class="arrowSmall" src="res/bestes.gif" alt="Pfeil Bestes"
+                    draggable="false">: <input type="text" id="bestes-zeiger" value="0" data-position="0" disabled>
+            </div>
+            <div class="zeigerPosition"><img class="arrowSmall" src="res/speicherzeiger.gif" alt="Pfeil Speicherzeiger"
+                    draggable="false">: <input type="text" id="speicherzeiger-zeiger" value="0" data-position="0"
+                    disabled></div>
+            <div class="zeigerPosition"><img class="arrowSmall" src="res/ende.gif" alt="Pfeil Ende" draggable="false">:
+                <input type="text" id="ende-zeiger" value="0" data-position="0" disabled>
+            </div>
+        </div>
     </div>
 
-   
-     Draggable algorihtmn part DIVS 
-    <div class="draggable" draggable="true" id="card1">
-        <div id="card1header">Vertausche die Karte unter -BESTES- mit der Karte unter -ANFANG-</div>
-    </div>
-
-    <div class="draggable" draggable="true" id="card2">
-        <div id="card2header">Kommt der Buchstabe unter -SPEICHERZEIGER- alphabethisch früher als der Buchstabe unter -BESTES-?</div>
-    </div>
-
-    <div class="draggable" draggable="true" id="card3">
-        <div id="card3header">Wenn -SPEICHERZEIGER- auf -ENDE- steht, weiter bei (4.), sonst wiederhole ab (1.)</div>
-    </div>
-
-    <div class="draggable" draggable="true" id="card4">
-        <div id="card4header">Verschiebe -ANFANG- um eine Position nach rechts</div>
-    </div>
-
-    <div class="draggable" draggable="true" id="card5">
-        <div id="card5header">Setze -SPEICHERZEIGER- und -BESTES- auf die erste zu sortierende Karte</div>
-    </div>
-
-    <div class="draggable" draggable="true" id="card6">
-        <div id="card6header">Verschiebe -SPEICHERZEIGER- um eine Position nach rechts</div>
-    </div>
-
-    <div class="draggable" draggable="true" id="card7">
-        <div id="card7header">Wenn -ANFANG- = -ENDE-, fertig, sonst wiederhole ab (0.)</div>
-    </div>
-
-    <div class="draggable" draggable="true" id="card8">
-        <div id="card8header">-ANFANG- und -ENDE- zeigen auf die erste bzw. die letzte zu sortierende Karte</div>
-    </div>
-
-
-    <ul id="droparea-list">
-        <li><div class="droparea"></div></li>
-        <li><div class="droparea"></div></li>
-        <li><div class="droparea"></div></li>
-        <li><div class="droparea"></div></li>
-        <li><div class="droparea"></div></li>
-        <li><div class="droparea"></div></li>
-        <li><div class="droparea"></div></li>
-        <li><div class="droparea"></div></li>
-      </ul>
-
-
--->
-    <div id="number-cards">
-        <div id="card-pos1" class="number-card">5</div>
-        <div id="card-pos2" class="number-card">2</div>
-        <div id="card-pos3" class="number-card">8</div>
-        <div id="card-pos4" class="number-card">1</div>
-        <div id="card-pos5" class="number-card">3</div>
-        <div id="card-pos6" class="number-card">7</div>
-        <div id="card-pos7" class="number-card">9</div>
-</div>
-
-    <div id="arrows">
-        Position Zeiger Anfang: <input type="text" id="anfang-zeiger" value="0" data-position="0" disabled>
-        Position Zeiger Bestes: <input type="text" id="bestes-zeiger" value="0" data-position="0" disabled>
-        Position Zeiger Speicherzeiger: <input type="text" id="speicherzeiger-zeiger" value="0" data-position="0" disabled>
-        Position Zeiger Ende: <input type="text" id="ende-zeiger" value="0" data-position="0" disabled>
-    </div>
 
     <button onclick="showalert()">BEISPIEL ABSCHLIESSEN</button>
-
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

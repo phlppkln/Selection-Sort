@@ -1,85 +1,117 @@
-#div1 {
-    width: 350px;
-    height: 70px;
-    padding: 10px;
-    border: 1px solid #aaaaaa;
-  }
-  
-  /*
+/*
   *{
     border: 1px solid red;
-  }*/
-  
-  .draggable {
-    position: absolute;
-    z-index: 9;
-    border: 1px solid black;
-    text-align: center;
-    background-color: #2196F3;
-    color: #fff;
-    cursor: move;
-    padding: 10px;
   }
-  
-  ul{
-    list-style-type: none;
-  }
-  
-  #numbers li {
-    display: inline;
-  }
-  .number-card{ 
-    padding: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    border: 1px solid black;
-    color: black;
-    font-weight: 80;
-    height: 20px;
-    width: 20px;
-    background-color: lightgrey;
-  }
-  
-  .droparea{
-    height: 50px;
-    list-style-type: none;
-    background-color: rgb(85, 153, 255);
-    line-height: 3.2;
-    padding: 10px;
-    margin: 10px auto;
-    position: relative;
-    display: block;
-  }
+*/
 
-
-  .tinted {
-    background-color: #3700ff;
-}
-.list-group-item {
-    position: relative;
-    display: block;
-    padding: .75rem 1.25rem;
-    margin-bottom: -1px;
-    background-color: #fff;
-    border: 1px solid rgba(0,0,0,.125);
+#content{
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1500px;
+  float: none;
 }
 
-.col {
-  padding-right: 0;
-  margin-right: 15px;
+.arrowSmall{
+  width: 30px;
 }
-.list-group {
-  display: -ms-flexbox;
+
+#cardContainer {
+  background-color: #ffffff;
+  border: 1px solid gray;
+  height: 160px;
+  padding: 3px;
+  margin: 10px;
+}
+
+.card {
+  border: 2px solid black;
+  background-color: white;
+  cursor: move;
+  display: inline-block;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+
+#algorithmnContainer{
   display: flex;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  padding-left: 0;
-  margin-bottom: 0;
+  flex-direction: row;
 }
-.col {
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  -ms-flex-positive: 1;
+
+#algorithmnListContainer{
+  text-align: center;
+  display: flex;
+  margin: 20px;
+}
+
+#slotNumberContainer{
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.slotNumber{  
+  height: 60px;
+  margin: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#dropareaContainer{
   flex-grow: 1;
-  max-width: 100%;
+}
+
+.droparea {
+  background-color: rgb(85, 153, 255);
+  opacity: 0.5;
+  height: 60px;
+  margin: 3px;
+}
+
+.dropareaActive{
+  opacity: 1;
+}
+
+
+.conditionDroparea{
+  background-color: rgb(139, 248, 182);
+  margin-left: 50px;
+}
+.initDroparea{
+  background-color: rgb(196, 196, 196);
+}
+
+#numberListContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.numberList {
+  border: 1px solid black;
+  border-radius: 5px;
+  color: black;
+  font-weight: 1000;
+  background-color: rgb(247, 247, 247);
+  width: 50px;
+  height: 30px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+#arrowsContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.zeigerPosition{
+  padding: 10px;
+  margin: 20px;
 }

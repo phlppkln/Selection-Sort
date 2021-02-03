@@ -1,8 +1,8 @@
-
+/*
   *{
-    /*border: 1px solid red;*/
+    border: 1px solid red;
   }
-
+*/
 
 #content{
   margin-left: auto;
@@ -16,15 +16,20 @@
   border: none;
   border-radius: 5px;
   color: white;
-  padding: 15px 32px;
+  padding: 10px 25px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
+  font-size: 1em;
+  margin: 10px 4px;
   cursor: pointer;
-  width: 200px;
-  height: 80px;
+  width: 180px;
+  height: 60px;
+}
+
+.button:hover {
+  background-color: #2d682f; /* Green */
+  color: white;
 }
 
 .arrowSmall{
@@ -77,9 +82,8 @@
 }
 
 #dropareaContainer{  
-  display: flex;
-  flex-direction: column;
-  flex-grow: 9;
+  flex-grow: 7;
+  width: 1000px;
 }
 
 .droparea {

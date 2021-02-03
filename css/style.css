@@ -1,14 +1,30 @@
-/*
+
   *{
-    border: 1px solid red;
+    /*border: 1px solid red;*/
   }
-*/
+
 
 #content{
   margin-left: auto;
   margin-right: auto;
   max-width: 1500px;
   float: none;
+}
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 200px;
+  height: 80px;
 }
 
 .arrowSmall{
@@ -18,7 +34,7 @@
 #cardContainer {
   background-color: #ffffff;
   border: 1px solid gray;
-  height: 160px;
+  height: 150px;
   padding: 3px;
   margin: 10px;
 }
@@ -36,21 +52,20 @@
 
 #algorithmnContainer{
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
 }
 
 #algorithmnListContainer{
-  text-align: center;
   display: flex;
+  flex-grow: 8;
   margin: 20px;
 }
 
 #slotNumberContainer{
-  width: 50px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-content: center;
+  flex-grow: 1;
 }
 
 .slotNumber{  
@@ -60,15 +75,22 @@
   justify-content: center;
   align-items: center;
 }
-#dropareaContainer{
-  flex-grow: 1;
+
+#dropareaContainer{  
+  display: flex;
+  flex-direction: column;
+  flex-grow: 9;
 }
 
 .droparea {
   background-color: rgb(85, 153, 255);
-  opacity: 0.5;
+  border-radius: 5px;
+  opacity: 0.6;
   height: 60px;
   margin: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .dropareaActive{
@@ -82,6 +104,14 @@
 }
 .initDroparea{
   background-color: rgb(196, 196, 196);
+}
+
+#algorithmnButtonContainter{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
 }
 
 #numberListContainer{

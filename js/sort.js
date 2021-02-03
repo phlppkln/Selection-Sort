@@ -5,6 +5,8 @@ var firstUnsortedCardPosition;
 var speicherzeigerBesserBestes;
 var currentAlgoStep, previousAlgoStep;
 
+var tick;
+
 $(document).ready(function () {
     firstUnsortedCardPosition = 0;
     speicherzeigerBesserBestes = false;
@@ -18,15 +20,30 @@ $(document).ready(function () {
     endePosition = document.getElementById("anfang-zeiger").getAttribute("data-position");
 
     resetAlgorithmus();
+
+    tick = false;
+    setInterval(autoRunAlgorithmn, 1000);
 });
 
 function startAlgorithmn() {
-    console.log("startAlgorithmn");
+    tick = true;
 }
+
+function stopAlgorithmn(){
+    tick = false;
+}
+
+function autoRunAlgorithmn(){
+    if(tick){
+        stepForward();
+    }
+}
+
 
 function stepForward() {
     var parent = document.getElementById('drop-pos'+currentAlgoStep);
     if(parent.childNodes.length<=0) { 
+        stopAlgorithmn();
         alert("Algorithmus ist leer!");    
         return;
     }

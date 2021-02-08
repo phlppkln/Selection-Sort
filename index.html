@@ -7,15 +7,19 @@
     <title>Example-1</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.1/css/all.css">
 </head>
 
 <body>
     <div id="content">
         <h1>Selection Sort Algorithmus</h1>
 
-        <p>Versuchen Sie die ungeordnete Liste unten mithilfe der Elemente zu sortieren.</p>
+        <p id="introduction">Ein Algorithmus beschreibt eine Folge von Anweisungen, mit denen ein bestimmtes Problem gelöst werden kann.
+            In diesem Beispiel sollen Sie einen Selection Sort Algorithmus zusammenstellen, der eine Liste von 7 Zahlen
+            in eine aufsteigende Reihenfolge bringt. 
+        <p>
 
-        <!--
+            <!--
     <button onclick="moveAnfangEnde()">Anfang und Ende auf erste bzw letzte Karte</button>
     <br>
     <button onclick="moveSpeicherzeigerBestesToBeginning()">Setze Speicherzeiger und Bestes auf die erste zu sortierende Karte</button>
@@ -73,6 +77,12 @@
                     draggable="false">, fertig, sonst wiederhole ab (1.)</div>
         </div>
         <div id="algorithmnContainer">
+            <!--
+            <div id="stepDescription">
+                Here the steps will be written
+            </div>
+        -->
+
             <div id="algorithmnListContainer">
                 <div id="slotNumberContainer">
                     <div class="slotNumber" id="">0</div>
@@ -98,14 +108,24 @@
                     <div class="droparea" id="drop-pos8"></div>
                 </div>
             </div>
-
+            <!--
             <div id="algorithmnButtonContainter">
                 <button class="button" onclick="startAlgorithmn()">Algorithmus starten</button>
                 <button class="button" onclick="stopAlgorithmn()">Algorithmus stoppen</button>
                 <button class="button" onclick="stepForward()">Schritt vor</button>
                 <button class="button" onclick="showalert()">Schritt zurück</button>
                 <button class="button" onclick="resetAlgorithmus()">Algorithmus zurücksetzen</button>
- </div>
+            </div>
+-->
+
+            <div id="algorithmnButtonContainter">
+                <button class="button" onclick="startAlgorithmn()"><i class="fas fa-play fa-3x"></i></button>
+                <button class="button" onclick="pauseAlgorithmn()"><i class="fas fa-pause fa-3x"></i></i></button>
+                <button class="button" onclick="stopAlgorithmn()"><i class="fas fa-stop fa-3x"></i></button>
+                <button class="button" onclick="stepForward()"><i class="fas fa-forward fa-3x"></i></button>
+                <button class="button" onclick="stepBackward()"><i class="fas fa-backward fa-3x"></i></button>
+                <button class="button" onclick="resetAlgorithmus()"><i class="fas fa-undo-alt fa-3x"></i></button>
+            </div>
         </div>
 
         <div id="numberListContainer">
@@ -119,18 +139,29 @@
         </div>
 
         <div id="arrowsContainer">
-            <div class="zeigerPosition"><img class="arrowSmall" src="res/anfang.gif" alt="Pfeil Anfang"
-                    draggable="false">: <input type="text" id="anfang-zeiger" value="0" data-position="0" disabled>
+            <div class="zeigerPosition"><img class="arrowMedium" src="res/anfang.gif" alt="Pfeil Anfang"
+                    draggable="false">
+                <input type="text" id="anfang-zeiger" value="0" data-position="0" disabled>
             </div>
-            <div class="zeigerPosition"><img class="arrowSmall" src="res/bestes.gif" alt="Pfeil Bestes"
-                    draggable="false">: <input type="text" id="bestes-zeiger" value="0" data-position="0" disabled>
+            <div class="zeigerPosition"><img class="arrowMedium" src="res/bestes.gif" alt="Pfeil Bestes"
+                    draggable="false">
+                <input type="text" id="bestes-zeiger" value="0" data-position="0" disabled>
             </div>
-            <div class="zeigerPosition"><img class="arrowSmall" src="res/speicherzeiger.gif" alt="Pfeil Speicherzeiger"
-                    draggable="false">: <input type="text" id="speicherzeiger-zeiger" value="0" data-position="0"
-                    disabled></div>
-            <div class="zeigerPosition"><img class="arrowSmall" src="res/ende.gif" alt="Pfeil Ende" draggable="false">:
+            <div class="zeigerPosition"><img class="arrowMedium" src="res/speicherzeiger.gif" alt="Pfeil Speicherzeiger"
+                    draggable="false">
+                <input type="text" id="speicherzeiger-zeiger" value="0" data-position="0" disabled>
+            </div>
+            <div class="zeigerPosition"><img class="arrowMedium" src="res/ende.gif" alt="Pfeil Ende" draggable="false">
                 <input type="text" id="ende-zeiger" value="0" data-position="0" disabled>
             </div>
+        </div>
+
+        <div id="trackedParameters">
+            Zeit: <input type="text" id="zeit" value="0" disabled>
+            Verschiebeoperationen von Karten: <input type="text" id="verschiebeoperationen" value="0" disabled>
+            Algorithmus zurückgesetzt: <input type="text" id="zurueckgesetzt" value="0" disabled>
+            Vor Button gedückt: <input type="text" id="anzahlVor" value="0" disabled>
+            Zurück Button gedrückt: <input type="text" id="anzahlZurueck" value="0" disabled>
         </div>
     </div>
 

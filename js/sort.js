@@ -7,13 +7,18 @@ var currentAlgoStep, previousAlgoStep;
 
 var tick;
 
+var cards;
+var cardContainer;
+
 $(document).ready(function () {
     firstUnsortedCardPosition = 0;
     speicherzeigerBesserBestes = false;
     currentAlgoStep = 0;
     previousAlgoStep = -1;
 
-    numbers = document.querySelectorAll('.numberList');
+    cards = document.querySelectorAll(".card");
+    cardContainer = document.getElementById("cardContainer");
+    numbers = document.querySelectorAll(".numberList");
     anfangPosition = document.getElementById("anfang-zeiger").getAttribute("data-position");
     bestesPosition = document.getElementById("bestes-zeiger").getAttribute("data-position");
     speicherzeigerPosition = document.getElementById("anfang-zeiger").getAttribute("data-position");
@@ -27,10 +32,33 @@ $(document).ready(function () {
 
 function startAlgorithmn() {
     tick = true;
+    /**if(tick == false){
+        tick = true;
+    }
+    else{
+        tick = false;
+
+    }**/
+}
+
+function pauseAlgorithmn(){
+    tick = false;
 }
 
 function stopAlgorithmn(){
     tick = false;
+
+    //reset active algorithmn step
+    if(previousAlgoStep != -1){ 
+        document.getElementById('drop-pos'+previousAlgoStep).classList.remove('dropareaActive');
+    }
+    
+    previousAlgoStep = -1;
+    currentAlgoStep = 0;
+    setAnfangZeigerPosition(0);
+    setEndeZeigerPosition(0);
+    setBestesZeigerPosition(0);
+    setSpeicherzeigerZeigerPosition(0);
 }
 
 function autoRunAlgorithmn(){
@@ -52,8 +80,8 @@ function stepForward() {
 }
 
 
-function stepBack() {
-
+function stepBackward() {
+    alert("Not implemented yet");
 }
 
 function doStep(cardId) {
@@ -101,12 +129,24 @@ function doStep(cardId) {
 }
 
 function resetAlgorithmus() {
+    
+    //reset active algorithmn step
+    if(previousAlgoStep != -1){ 
+        document.getElementById('drop-pos'+previousAlgoStep).classList.remove('dropareaActive');
+    }
+
     previousAlgoStep = -1;
-    currentAlgoStep=0;
+    currentAlgoStep = 0;
     setAnfangZeigerPosition(0);
     setEndeZeigerPosition(0);
     setBestesZeigerPosition(0);
     setSpeicherzeigerZeigerPosition(0);
+    
+    cards.forEach(moveToCardContainer);
+}
+
+function moveToCardContainer(item, index){
+    cardContainer.appendChild(item);
 }
 
 function changeActive(){

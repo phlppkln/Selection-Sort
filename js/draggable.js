@@ -1,8 +1,12 @@
+var dragActions;
+
 var dragOverHandler = function (e) {
   e.preventDefault();
 };
 
 var dropOnDropareaHandler = function (e) {
+  console.log("dropOnDropareaHandler")
+  increaseDragActions();
   e.preventDefault();
   if (!checkIfDropareaContainsCard(this)) {
       var data = e.originalEvent.dataTransfer.getData('Text');
@@ -12,6 +16,7 @@ var dropOnDropareaHandler = function (e) {
 };
 
 var dropOnCardContainerHandler = function (e) {
+  increaseDragActions();
   e.preventDefault();
   var data = e.originalEvent.dataTransfer.getData('Text');
   e.target.appendChild(document.getElementById(data));
@@ -24,6 +29,8 @@ var dropOnCardContainerHandler = function (e) {
 };
 
 $(document).ready(function () {
+  dragActions = document.getElementById("verschiebeoperationen");
+
   $('.card').on('dragstart', function (e) {
       e.originalEvent.dataTransfer.setData('Text', e.target.id);
   });
@@ -49,4 +56,9 @@ function checkIfDropareaContainsCard(droparea) {
 
 function printchild(item, index) {
   console.log(item.id);
+}
+
+function increaseDragActions(){
+  console.log("called increase dragActions");
+  dragActions.value = parseInt(dragActions.value) + 1;
 }

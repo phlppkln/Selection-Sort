@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Example-1</title>
+    <title>TU OSA - Selection-Sort</title>
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.1/css/all.css">
@@ -12,12 +12,13 @@
 
 <body>
     <div id="content">
-        <h1>Selection Sort Algorithmus</h1>
+        <h1>Erstellung eines Selection-Sort Algorithmus</h1>
 
         <p id="introduction">Ein Algorithmus beschreibt eine Folge von Anweisungen, mit denen ein bestimmtes Problem gelöst werden kann.
-            In diesem Beispiel sollen Sie einen Selection Sort Algorithmus zusammenstellen, der eine Liste von 7 Zahlen
-            in eine aufsteigende Reihenfolge bringt. 
+            In diesem Beispiel sollen Sie einen Selection-Sort Algorithmus zusammenstellen, der eine Liste von 7 Zahlen
+            aufsteigend sortiert. 
         <p>
+            <p id="introduction">Sie können auch ein Blatt Papier als Hilfsmittel verwenden.</p>
 
             <!--
     <button onclick="moveAnfangEnde()">Anfang und Ende auf erste bzw letzte Karte</button>
@@ -123,7 +124,7 @@
                 <button class="button" onclick="pauseAlgorithmn()"><i class="fas fa-pause fa-3x"></i></i></button>
                 <button class="button" onclick="stopAlgorithmn()"><i class="fas fa-stop fa-3x"></i></button>
                 <button class="button" onclick="stepForward()"><i class="fas fa-forward fa-3x"></i></button>
-                <button class="button" onclick="stepBackward()"><i class="fas fa-backward fa-3x"></i></button>
+                <!--<button class="button" onclick="stepBackward()"><i class="fas fa-backward fa-3x"></i></button>-->
                 <button class="button" onclick="resetAlgorithmus()"><i class="fas fa-undo-alt fa-3x"></i></button>
             </div>
         </div>
@@ -155,6 +156,8 @@
                 <input type="text" id="ende-zeiger" value="0" data-position="0" disabled>
             </div>
         </div>
+
+        <div style="color: red; font-weight: bold;">PARAMETERS NOT IMPLEMENTED YET</div>
 
         <div id="trackedParameters">
             Zeit: <input type="text" id="zeit" value="0" disabled>
